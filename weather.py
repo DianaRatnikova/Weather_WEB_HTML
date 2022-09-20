@@ -1,13 +1,16 @@
-<<<<<<< HEAD
 from urllib import request
 import requests
-import api_key
+#import api_key
 
+
+# Rename `os.environ` to `env` for nicer code
+from os import environ as env
 
 def weather_by_city(city_name):
     weather_url = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
     params = {
-        "key": api_key.API_KEY,
+        #"key": api_key.API_KEY,
+        "key": env['API_KEY'],
         "q": city_name,
         "format": "json",
         "num_of_days": 1,
@@ -22,7 +25,7 @@ def weather_by_city(city_name):
                 try:
                     return weather['data']['current_condition'][0]
                 except (IndexError, TypeError):
-                    return False
+                    return None
     except (requests.RequestException, ValueError):
         print("Сетевая ошибка")
     return False
