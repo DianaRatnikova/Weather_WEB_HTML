@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask
 from weather import weather_by_city
 from flask import render_template
@@ -19,23 +18,3 @@ def index():
 
 if __name__ == "__main__":
     app.run()
-=======
-from flask import Flask
-from weather import weather_by_city
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def index():
-    weather = weather_by_city("Moscow,Russia")
-    if weather:
-        return (f"Сейчас {weather['temp_C']}, "
-                f"ощущается как {weather['FeelsLikeC']}")
-    else:
-        return ("Сервис временно недоступен ")
-
-
-if __name__ == "__main__":
-    app.run()
->>>>>>> ab9e2f5e97e5fde89851b9815fb16f3b4ca331fd
