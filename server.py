@@ -1,6 +1,8 @@
 from flask import Flask
 from weather import weather_by_city
 from flask import render_template
+from python_org_news import get_python_news
+
 
 app = Flask(__name__)
 
@@ -13,8 +15,8 @@ def index():
         weather_text = f"Сейчас {weather['temp_C']}, ощущается как {weather['FeelsLikeC']}"
     else:
         weather_text ="Сервис временно недоступен "
-
-    return render_template('index.html', page_title=page_title, weather_text=weather_text)
+    news_list = get_python_news()
+    return render_template('index.html', page_title=page_title, weather_text=weather_text, news=news_list)
 
 if __name__ == "__main__":
     app.run()
