@@ -16,7 +16,7 @@ def index():
     else:
         weather_text ="Сервис временно недоступен "
     news_list = get_python_news()
-    return render_template('index.html', page_title=page_title, weather_text=weather_text, news=news_list)
+    return render_template('index.html', page_title=page_title, weather=weather, news_list=news_list)
 
 if __name__ == "__main__":
     app.run()
