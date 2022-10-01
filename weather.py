@@ -5,11 +5,11 @@ import requests
  
 # Rename `os.environ` to `env` for nicer code
 from os import environ as env
+from dotenv import load_dotenv, find_dotenv #для .env
 
 def weather_by_city(city_name):
     weather_url = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
     params = {
-        #"key": api_key.API_KEY,
         "key": env['API_KEY'],
         "q": city_name,
         "format": "json",
@@ -32,5 +32,7 @@ def weather_by_city(city_name):
 
 
 if __name__ == "__main__":
+    load_dotenv(find_dotenv())
+    print(f"API_KEY:  {env['API_KEY']}")
     weather = weather_by_city("Moscow,Russia")
     print(weather)
