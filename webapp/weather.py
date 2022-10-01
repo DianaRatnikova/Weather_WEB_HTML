@@ -1,6 +1,7 @@
 from urllib import request
 import requests
 #import api_key
+from flask import current_app # для config
 
  
 # Rename `os.environ` to `env` for nicer code
@@ -8,9 +9,10 @@ from os import environ as env
 from dotenv import load_dotenv, find_dotenv #для .env
 
 def weather_by_city(city_name):
-    weather_url = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
+    weather_url = current_app.config['WEATHER_URL']
     params = {
-        "key": env['API_KEY'],
+       # до файла конфигурации было "key": env['API_KEY'],
+        "key": current_app.config['WEATHER_API_KEY'],
         "q": city_name,
         "format": "json",
         "num_of_days": 1,
