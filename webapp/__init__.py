@@ -4,6 +4,9 @@ from flask import render_template
 from webapp.python_org_news import get_python_news
 from webapp.model import db, News
 
+# добавляем страницк логина
+from webapp.forms import LoginForm
+
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('config.py') # откуда брать параметры конфигурации
@@ -21,7 +24,16 @@ def create_app():
         # вместо get_python_news():
         news_list = News.query.order_by(News.published.desc()).all()
         return render_template('index.html', page_title=page_title, weather=weather, news_list=news_list)
+
+    @app.route('/login')
+
+    def login():
+        title = "Авторизация"
+        login_form = LoginForm()
+        return render_template('login.html', page_title=title, form=login_form)
+
     return app
+
 
 if __name__ == "__main__":
     app.run()
