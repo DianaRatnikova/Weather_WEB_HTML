@@ -53,9 +53,9 @@ set FLASK_APP=webapp&&set FLAK_ENV=development&&set FLASK_DEBUG=1&&flask run
 
 Результат - вывод сообщения о температуре, либо о невозможности подключиться к серверу
 Доступны страницы:
-http://127.0.0.1:5000
-http://127.0.0.1:5000/login
-http://127.0.0.1:5000/admin
+http://127.0.0.1:5000, 
+http://127.0.0.1:5000/login, 
+http://127.0.0.1:5000/admin, 
 http://127.0.0.1:5000/logout
 
 
